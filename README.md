@@ -14,7 +14,7 @@
 # Install Django Cross-Origin Resource Sharing (CORS)
 # pip install django-cors-headers
 
-# Setup
+# Project Setup
 # django-admin startproject config .
 
 # Create Backend App
