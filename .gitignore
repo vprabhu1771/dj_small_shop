@@ -2,3 +2,18 @@
 /config/__pycache__
 /backend/__pycache__
 /config/__pycache__
+
+
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+
+# Ignore all .pyc files in all directories
+**/*.pyc
+
+# Ignore all .pyo files in all directories
+**/*.pyo
+
+# Ignore all .pyd files in all directories
+**/*.pyd
+
