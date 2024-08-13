@@ -1,0 +1,32 @@
+[
+  {
+    "model": "backend.Category",
+    "fields": {
+      "name": "TV"
+    }
+  },
+  {
+    "model": "backend.Category",
+    "fields": {
+      "name": "Laptop"
+    }
+  },
+  {
+    "model": "backend.Category",
+    "fields": {
+      "name": "AC"
+    }
+  },
+  {
+    "model": "backend.Category",
+    "fields": {
+      "name": "Fan"
+    }
+  },
+  {
+    "model": "backend.Category",
+    "fields": {
+      "name": "Fridge"
+    }
+  }
+]
