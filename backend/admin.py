@@ -6,7 +6,7 @@ from backend.models import CustomUser
 from django.contrib.auth.admin import UserAdmin
 from backend.forms import CustomerUserCreationForm,CustomerUserChangeForm
 
-from .models import Category, Brand, Product
+from .models import Category, Brand, Product, Cart
 
 class CustomUserAdmin(UserAdmin):
     add_form = CustomerUserCreationForm
