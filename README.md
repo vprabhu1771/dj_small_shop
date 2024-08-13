@@ -166,3 +166,5 @@ Ensure you have Python installed. You can download it from [python.org](https://
 ### Stopping the Server
 
 To stop the Django development server, press `Ctrl+C` in the terminal where the server is running.
+
+For more details on running the Django development server, refer to the [Django documentation on the development server](https://docs.djangoproject.com/en/stable/ref/django-admin/#runserver).
