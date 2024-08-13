@@ -90,3 +90,22 @@ class Product(models.Model):
 
     class Meta:
         db_table = 'product'
+
+class Cart(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    custom_user = models.ForeignKey(CustomUser,on_delete=models.SET_NULL,blank=True,null=True)
+    Product =  models.ForeignKey(Product,on_delete=models.SET_NULL,blank=True,null=True)
+    qty = models.IntegerField()
+
+    def __str__(self):
+        return str(self.qty)
+
+    def total_price(self):
+        return self.qty * self.product.price if self.product else 0
+    
+    def grand_total(self):
+        cart_items = Cart.objects.filter(custom_user=self.custom_user)
+        total = sum (element.total_price()for element in cart_items)
+
+    class Meta:
+        db_table = 'cart'
