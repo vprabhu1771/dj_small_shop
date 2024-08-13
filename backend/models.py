@@ -140,3 +140,31 @@ class Order(models.Model):
 
     class Meta:
         db_table = 'order'
+
+class OrderItem(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    order = models.ForeignKey(Order,on_delete=models.SET_NULL,blank=True,null=True)
+    product = models.ForeignKey(Product,on_delete=models.SET_NULL,blank=True,null=True)
+    qty = models.IntegerField(null=True,blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    discount = models.IntegerField(blank=True,null=True,default=0)
+
+    def calculate_total_amount(self):
+        if self.price and self.qty:
+            subtotal = self.price * self.qty
+            if self.discount > 0:
+                discount_amount = (subtotal * self.discount) / 100
+                total_amount = subtotal - discount_amount
+            else:
+                total_amount = subtotal
+            return total_amount
+        return 0
+
+    def save(self, *args, **kwargs):
+        # Automatically update amount based on the calculated total amount
+        self.amount = self.calculate_total_amount()
+        super().save(*args, **kwargs)
+
+    class Meta:
+        db_table = 'order_items'
