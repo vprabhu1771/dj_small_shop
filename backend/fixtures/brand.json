@@ -1,0 +1,32 @@
+[
+  {
+    "model": "backend.Brand",
+    "fields": {
+      "name": "HP"
+    }
+  },
+  {
+    "model": "backend.Brand",
+    "fields": {
+      "name": "Lenova"
+    }
+  },
+  {
+    "model": "backend.Brand",
+    "fields": {
+      "name": "Intel"
+    }
+  },
+  {
+    "model": "backend.Brand",
+    "fields": {
+      "name": "LG"
+    }
+  },
+  {
+    "model": "backend.Brand",
+    "fields": {
+      "name": "Sony"
+    }
+  }
+]
