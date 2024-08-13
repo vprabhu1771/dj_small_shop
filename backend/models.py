@@ -109,3 +109,34 @@ class Cart(models.Model):
 
     class Meta:
         db_table = 'cart'
+
+class OrderStatus(models.TextChoices):
+    PENDING = 'PENDING',_('Pending')
+    APPROVED = 'APPROVED',_('Approved')
+    REJECTED = 'REJECTED',_('Rejected')
+
+class PaymentMethod(models.TextChoices):
+    CASH = 'CASH',_('CASH')
+    UPI = 'UPI',_('UPI')
+    CARD = 'CARD',_('CARD')
+
+
+class Order(models.Model):
+    id=models.BigAutoField(primary_key=True)
+    custom_user = models.ForeignKey(CustomUser,on_delete=models.SET_NULL,blank=True,null=True)
+    order_number = models.CharField(max_length=255,blank=True,null=True)
+    order_date = models.DateTimeField(auto_now_add=True)
+    total_amount = models.DecimalField(max_digits=10,decimal_places=2,null=True,blank=True)
+    order_status = models.CharField(
+        max_length=255,
+        choices=OrderStatus.choices,
+        default=OrderStatus.PENDING
+    )
+    payment_method = models.CharField(
+        max_length=255,
+        choices=PaymentMethod.choices,
+        default=PaymentMethod.CASH
+    )
+
+    class Meta:
+        db_table = 'order'
