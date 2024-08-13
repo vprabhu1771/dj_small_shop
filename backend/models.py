@@ -56,3 +56,14 @@ class Category(models.Model):
 
     class Meta:
         db_table='category'
+
+class Brand(models.Model):
+    id=models.BigAutoField(primary_key=True)
+    name=models.CharField(max_length=255)
+    image_path = models.ImageField (upload_to='brand',null=True,blank=True,default='no-image-available.jpg')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table='brand'
