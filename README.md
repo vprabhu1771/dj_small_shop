@@ -11,6 +11,9 @@
 # Install PDF Library
 # pip install xhtml2pdf
 
+# Install Django Cross-Origin Resource Sharing (CORS)
+# pip install django-cors-headers
+
 # Setup
 # django-admin startproject config .
 
