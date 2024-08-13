@@ -102,7 +102,7 @@ class Cart(models.Model):
 
     def total_price(self):
         return self.qty * self.product.price if self.product else 0
-    
+
     def grand_total(self):
         cart_items = Cart.objects.filter(custom_user=self.custom_user)
         total = sum (element.total_price()for element in cart_items)
