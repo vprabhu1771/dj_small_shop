@@ -6,6 +6,8 @@ from backend.models import CustomUser
 from django.contrib.auth.admin import UserAdmin
 from backend.forms import CustomerUserCreationForm,CustomerUserChangeForm
 
+from .models import Category
+
 class CustomUserAdmin(UserAdmin):
     add_form = CustomerUserCreationForm
     form = CustomerUserChangeForm
@@ -31,3 +33,8 @@ class CustomUserAdmin(UserAdmin):
     image_tag.short_description = 'Image'
 
 admin.site.register(CustomUser,CustomUserAdmin)
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id','name',)
+
+admin.site.register(Category, CategoryAdmin)
