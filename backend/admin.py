@@ -6,7 +6,7 @@ from backend.models import CustomUser
 from django.contrib.auth.admin import UserAdmin
 from backend.forms import CustomerUserCreationForm,CustomerUserChangeForm
 
-from .models import Category, Brand
+from .models import Category, Brand, Product
 
 class CustomUserAdmin(UserAdmin):
     add_form = CustomerUserCreationForm
@@ -50,3 +50,14 @@ class BrandAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Brand, BrandAdmin)
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('category','brand','price','qty','name','image_tag',)
+
+    def image_tag(self, obj):
+        return format_html('<img src = "{}" width = "150" height="150" />'.format(obj.image_path.url))
+
+    image_tag.short_description = 'Image'
+
+
+admin.site.register(Product,ProductAdmin)
