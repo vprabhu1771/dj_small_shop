@@ -6,7 +6,7 @@ from backend.models import CustomUser
 from django.contrib.auth.admin import UserAdmin
 from backend.forms import CustomerUserCreationForm,CustomerUserChangeForm
 
-from .models import Category, Brand, Product, Cart
+from .models import Category, Brand, Product, Cart, Order, OrderItem
 
 class CustomUserAdmin(UserAdmin):
     add_form = CustomerUserCreationForm
@@ -68,3 +68,17 @@ class CartAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Cart, CartAdmin)
+
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 1
+
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = (
+    'id', 'custom_user', 'order_number', 'order_date', 'total_amount', 'order_status', 'payment_method',)
+    inlines = [OrderItemInline]
+
+
+admin.site.register(Order, OrderAdmin)
