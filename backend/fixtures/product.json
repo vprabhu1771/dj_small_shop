@@ -1,0 +1,24 @@
+[
+  {
+    "model": "backend.Product",
+    "fields": {
+      "name": "Sample Product 1",
+      "category": 1,
+      "brand": 1,
+      "price": "19.99",
+      "qty": 100,
+      "alert_stock": 10
+    }
+  },
+  {
+    "model": "backend.Product",
+    "fields": {
+      "name": "Sample Product 2",
+      "category": 2,
+      "brand": 2,
+      "price": "50.99",
+      "qty": 100,
+      "alert_stock": 10
+    }
+  }
+]
