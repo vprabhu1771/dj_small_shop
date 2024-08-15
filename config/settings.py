@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'backend',
+
+    'api_v2'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
