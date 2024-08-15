@@ -67,6 +67,10 @@ Ensure you have Python installed. You can download it from [python.org](https://
     python manage.py startapp backend
     ```
 
+8. **Create Frontend App**
+    ```
+    python manage.py startapp frontend
+    ```
 
 9. **Create API V1 App**
     ```
