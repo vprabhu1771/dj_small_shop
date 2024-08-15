@@ -24,13 +24,28 @@ class CategoryListView(generics.ListAPIView):
         return Response(data)
 
 class BrandListView(generics.ListAPIView):
-    queryset = Brand.objects.all()
+    permission_classes = [AllowAny]
+
     serializer_class = BrandSerializer
-    def list(self, request, *args, **kwargs):
+
+    def get_queryset(self):
+        queryset = Brand.objects.all()
+        brand_id = self.request.query_params.get('brand_id', None)
+        category_id = self.request.query_params.get('category_id', None)
+
+        if brand_id:
+            queryset = queryset.filter(id=brand_id)
+        if category_id:
+            queryset = queryset.filter(products__category_id=category_id).distinct()
+        return queryset.order_by('name')
+
+
+
+    def list(self,requst,*args,**kwargs):
         queryset = self.get_queryset()
-        serializer = self.get_serializer(queryset, many= True)
+        serializer = self.get_serializer(queryset,many = True)
         data = {
-            "data" : serializer.data
+            'data': serializer.data
         }
         return Response(data)
 
