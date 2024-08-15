@@ -1,0 +1,18 @@
+Add to Cart
+
+POST -> 192.168.1.122:8000/api/add-to-cart
+
+Headers
+
+Authorization Token 7567a5c53937f03440d51b6f5a0e9a3572c68cfe
+
+Content-Type application/json
+
+
+Body -> raw -> JSON (application/json)
+
+Enter the JSON data in the request body
+
+{
+    "product_id": 1
+}

@@ -1,0 +1,18 @@
+Cart Increase Quantity
+
+POST -> 192.168.1.122:8000/api/increase-quantity
+
+Body -> raw -> JSON (application/json)
+
+Enter the JSON data in the request body
+
+
+{
+    "cart_id": 1
+}
+
+Response
+
+{
+    "message": "Quantity increased in your cart."
+}

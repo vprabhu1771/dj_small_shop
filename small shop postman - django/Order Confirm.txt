@@ -1,0 +1,41 @@
+Order Confirm
+
+POST -> http://192.168.1.122:8000/api_v2/orders/
+
+Headers
+
+Authorization Token 7567a5c53937f03440d51b6f5a0e9a3572c68cfe
+
+Content-Type application/json
+
+
+Body -> raw -> JSON (application/json)
+
+Enter the JSON data in the request body
+
+{    
+    "payment_method": "UPI",
+    "order_items": [
+        {
+            "product": 1,
+            "qty": 2,
+            "unit_price": 15.00,
+            "amount": 30.00,
+            "discount": 0.00
+        },
+        {
+            "product": 2,
+            "qty": 1,
+            "unit_price": 25.00,
+            "amount": 25.00,
+            "discount": 0.00
+        }
+    ]
+}
+
+
+Response
+
+{
+    "message": "Order placed successfully."
+}

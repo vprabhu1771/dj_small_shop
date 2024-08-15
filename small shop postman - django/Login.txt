@@ -1,0 +1,18 @@
+Login
+
+POST -> 192.168.1.122:8000/api/login
+
+Body -> raw -> JSON (application/json)
+
+Enter the JSON data in the request body
+
+
+{
+    "email": "admin@gmail.com",
+    "password": "admin",
+    "device_name": "android"
+}
+
+Response
+
+13|mxTVPiqjK6BYKYGpHEQdCihp61Bn7ZlcjZ7JjnDDadea6e59
