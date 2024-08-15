@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'backend',
 
+    'rest_framework',
+    
     'api_v2'
 ]
 
