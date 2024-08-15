@@ -50,13 +50,26 @@ class BrandListView(generics.ListAPIView):
         return Response(data)
 
 class ProductListView(generics.ListAPIView):
-    queryset = Product.objects.all()
-    serializer_class =  ProductSerializer
+    permission_classes = [AllowAny]
+
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        queryset = Product.objects.all()
+        brand_id = self.request.query_params.get('brand_id', None)
+        category_id = self.request.query_params.get('category_id', None)
+
+        if brand_id:
+            queryset = queryset.filter(brand_id=brand_id)
+        if category_id:
+            queryset = queryset.filter(category_id=category_id)
+        return queryset.order_by('name')
+
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         serializer = self.get_serializer(queryset, many=True)
-        data ={
-            "data" : serializer.data
+        data = {
+            'data': serializer.data
         }
         return Response(data)
 
