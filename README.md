@@ -32,6 +32,12 @@ Ensure you have Python installed. You can download it from [python.org](https://
     ```
    pip install django
     ``` 
+   
+3. **Install Django REST Framework**
+
+    ```
+   pip install djangorestframework
+    ``` 
 
 4. **Install Pillow Library**
     
