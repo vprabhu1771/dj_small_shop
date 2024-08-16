@@ -1,15 +1,30 @@
 from django.shortcuts import render
 from rest_framework import generics, status
+from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from backend.models import Category, Brand, Product, Order, Cart
+from backend.models import Category, Brand, Product, Order, Cart, CustomUser
 
-from api_v2.serializers import CategorySerializer, BrandSerializer, ProductSerializer, OrderSerializer
+from api_v2.serializers import CategorySerializer, BrandSerializer, ProductSerializer, OrderSerializer, \
+    CustomUserSerializer
 
 
 # Create your views here.
+class UserCreateAPIView(CreateAPIView):
+    permission_classes = [AllowAny]
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            self.perform_create(serializer)
+            return Response({"message": "User successfully registered"}, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class CategoryListView(generics.ListAPIView):
     permission_classes = [AllowAny]
 
