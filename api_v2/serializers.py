@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from backend.models import Category, Brand, Product, Order, CustomUser
+from backend.models import Category, Brand, Product, Order, CustomUser, Cart
 
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import authenticate
