@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, status
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 from backend.models import Category, Brand, Product, Order, Cart, CustomUser
 
 from api_v2.serializers import CategorySerializer, BrandSerializer, ProductSerializer, OrderSerializer, \
-    CustomUserSerializer, EmailAuthTokenSerializer
+    CustomUserSerializer, EmailAuthTokenSerializer, CartSerializer
 
 
 # Create your views here.
